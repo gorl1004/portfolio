@@ -1,0 +1,74 @@
+[
+  {
+    "order": 1,
+    "title": "프로그래머 키우기",
+    "stack": "Unity · WebGL · C# · AI Pair Programming · 개인",
+    "videoId": "cPAtLrEUl5A",
+    "videoUrl": "https://youtu.be/cPAtLrEUl5A",
+    "playUrl": "https://play.gorl1004.cloud",
+    "descriptions": [
+      "브라우저에서 바로 해볼 수 있는, 혼자 만든 방치형 RPG입니다.",
+      "시즌 1을 설계부터 종료 루프, 폴리싱까지 완성했습니다."
+    ]
+  },
+  {
+    "order": 2,
+    "title": "Tower Defense",
+    "stack": "Unity · C# · 개인",
+    "videoId": "SuWEtFwTMLs",
+    "videoUrl": "https://youtu.be/SuWEtFwTMLs",
+    "playUrl": null,
+    "descriptions": [
+      "구조 설계에 집중해 혼자 처음부터 구현한 타워 디펜스 프로젝트입니다.",
+      "ServiceLocator, StateMachine, Observer 패턴을 직접 설계해 적용했습니다."
+    ]
+  },
+  {
+    "order": 3,
+    "title": "바이오하자드 RE:4",
+    "stack": "C++ · DirectX 11 · ImGui · 5인 팀",
+    "videoId": "5hOnI5itINM",
+    "videoUrl": "https://youtu.be/5hOnI5itINM?t=3348",
+    "playUrl": null,
+    "descriptions": [
+      "3D 액션 모작 팀 프로젝트에서 UI와 데이터 시스템 전반을 담당했습니다.",
+      "CSV 기반 데이터 관리와 런타임 수정 에디터를 구현했습니다."
+    ]
+  },
+  {
+    "order": 4,
+    "title": "궁수의 전설 2",
+    "stack": "C++ · DirectX 11 · 개인",
+    "videoId": "LZ_MzOUJylA",
+    "videoUrl": "https://youtu.be/LZ_MzOUJylA",
+    "playUrl": null,
+    "descriptions": [
+      "스테이지부터 스킬 트리까지 핵심 루프를 혼자 구현한 3D 모작 프로젝트입니다.",
+      "AABB·Sphere 콜라이더와 비트 마스크로 충돌 그룹을 분리했습니다."
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Wizard of Legend",
+    "stack": "C++ · DirectX 9 · 5인 팀",
+    "videoId": "uSEXE4nQvo0",
+    "videoUrl": "https://youtu.be/uSEXE4nQvo0",
+    "playUrl": null,
+    "descriptions": [
+      "2.5D 액션 모작 팀 프로젝트에서 스킬과 인벤토리 UI를 담당했습니다.",
+      "NPC 상호작용으로 보유 스킬을 비교하고 교체하는 UI를 구현했습니다."
+    ]
+  },
+  {
+    "order": 6,
+    "title": "닌자 베이스볼 배트맨",
+    "stack": "C++ · Win32 API · 개인",
+    "videoId": "HAhtIHV4UF4",
+    "videoUrl": "https://youtu.be/HAhtIHV4UF4",
+    "playUrl": null,
+    "descriptions": [
+      "Win32 API만으로 혼자 구현한 2D 벨트스크롤 액션 모작 프로젝트입니다.",
+      "STL 기반 클래스 설계와 상태 패턴으로 캐릭터 동작을 관리했습니다."
+    ]
+  }
+]

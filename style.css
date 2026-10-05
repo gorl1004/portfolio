@@ -1,0 +1,743 @@
+/* ============================================================
+   홍혁기 포트폴리오
+   색·여백 값은 :root에 모아두었습니다. 톤을 바꾸고 싶으면
+   여기 값만 고치면 전체에 반영됩니다.
+   ============================================================ */
+
+:root {
+  --bg:            #14161A;  /* 페이지 배경 */
+  --surface:       #1A1D23;  /* 카드 배경 */
+  --surface-raised:#1C1F26;  /* 프로젝트 카드 배경 (한 단계 밝게) */
+  --placeholder:   #23272F;  /* 이미지 자리 */
+  --line:          #2C313B;  /* 기본 테두리 */
+  --line-strong:   #3A414E;  /* 강조 테두리 */
+  --text:          #EDEEF1;  /* 본문 */
+  --text-soft:     #C3C8D2;  /* 설명문 */
+  --text-mute:     #9AA1AE;  /* 보조 */
+  --text-faint:    #6E7686;  /* 라벨 */
+  --accent:        #B8E04A;  /* 포인트 색 */
+  --accent-hover:  #D3EE85;
+
+  --shell:   1120px;         /* 본문 최대 폭 */
+  --gutter:  48px;           /* 좌우 여백 (데스크톱) */
+  --radius:  5px;
+
+  --sans: 'IBM Plex Sans KR', system-ui, -apple-system, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+/* 상단 고정 헤더에 가려지지 않도록 앵커 이동 시 여백을 둡니다. */
+section[id] { scroll-margin-top: 80px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--accent); }
+a:hover { color: var(--accent-hover); }
+
+h1, h2, h3 { margin: 0; line-height: 1.3; }
+p { margin: 0; }
+
+/* 키보드 사용자를 위한 포커스 표시 */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* 스크린리더·키보드 사용자용 본문 바로가기 */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 12px 20px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus { left: 12px; top: 12px; }
+
+.shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* ========== 공통 요소 ========== */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-accent {
+  background: var(--accent);
+  color: var(--bg);
+}
+.btn-accent:hover {
+  background: var(--accent-hover);
+  color: var(--bg);
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+}
+
+.section { padding-top: 76px; }
+
+.section-title {
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-note {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+}
+
+/* ========== 헤더 ========== */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(20, 22, 26, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+.logo {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-decoration: none;
+}
+.logo:hover { color: var(--accent); }
+
+.nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 26px;
+}
+
+.nav a {
+  font-size: 14px;
+  color: var(--text-mute);
+  text-decoration: none;
+  padding: 12px 0;
+}
+.nav a:hover { color: var(--text); }
+
+.nav .btn { padding: 12px 20px; font-size: 14px; }
+
+/* ========== About ========== */
+
+.about-top {
+  display: flex;
+  gap: 44px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.profile {
+  flex: 0 0 264px;
+  width: 264px;
+  height: 352px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.about-text {
+  flex: 1 1 520px;
+  min-width: 0;
+}
+
+.headline {
+  margin-top: 20px;
+  font-size: 42px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.28;
+}
+
+.name-en {
+  margin-top: 14px;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--text-mute);
+}
+
+.intro {
+  margin-top: 24px;
+  font-size: 17px;
+  line-height: 1.9;
+  color: var(--text-soft);
+}
+
+/* 생년월일·연락처 한 줄 띠 */
+.info-strip {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 28px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.info-item {
+  flex: 1 1 180px;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 13px 18px;
+  border-right: 1px solid var(--line);
+}
+.info-item:last-child { border-right: none; }
+
+.info-item dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+}
+
+.info-item dd {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text);
+}
+.info-item dd a {
+  color: inherit;
+  text-decoration: none;
+}
+.info-item dd a:hover { color: var(--accent); }
+
+/* 강점 카드 2×2 */
+.strength-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.strength { padding: 26px 28px; }
+
+.strength h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: 0 0 6px;
+}
+
+.strength p {
+  margin-top: 13px;
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text-soft);
+}
+
+/* ========== Skills ========== */
+
+.skill-table {
+  margin-top: 26px;
+  overflow: hidden;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  padding: 17px 26px;
+  border-bottom: 1px solid var(--line);
+}
+.skill-row:last-child { border-bottom: none; }
+
+.skill-label {
+  flex: 0 0 150px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.tag {
+  font-size: 14px;
+  color: var(--text-soft);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 8px 13px;
+}
+
+/* ========== Projects ========== */
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 26px;
+}
+
+.loading {
+  color: var(--text-faint);
+  font-family: var(--mono);
+  font-size: 13px;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.project-card {
+  position: relative;
+  display: flex;
+  gap: 26px;
+  padding: 22px;
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: border-color .15s ease, transform .15s ease;
+}
+
+.project-card:hover {
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
+
+/* 카드 전체를 덮는 투명 링크 — 어디를 눌러도 영상으로 이동합니다.
+   그 위에 올라가는 '플레이하기' 버튼만 z-index로 띄워 따로 동작합니다. */
+.card-link {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  z-index: 1;
+}
+
+.thumb {
+  flex: 0 0 280px;
+  width: 280px;
+  height: 158px;
+  object-fit: cover;
+  background: var(--placeholder);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+
+.project-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding: 2px 0;
+}
+
+.project-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.project-no {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.project-title {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.project-stack {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--text-mute);
+}
+
+.project-desc {
+  margin: 4px 0 0;
+  padding-left: 17px;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.watch {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-mute);
+  font-size: 13px;
+}
+
+/* 플레이 버튼은 카드 전체 링크보다 위에 올라와야 따로 눌립니다. */
+.play-slot {
+  flex: 0 0 auto;
+  align-self: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ========== Archive ========== */
+
+.archive-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 26px;
+  padding: 34px 36px;
+}
+
+.archive-row h3,
+.archive-block h3 {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.archive-row p {
+  margin-top: 9px;
+  font-size: 15px;
+  color: var(--text-mute);
+}
+
+.archive-block {
+  margin-top: 16px;
+  padding: 34px 36px;
+}
+
+.cloud-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.cloud-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 20px 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color .15s ease, background .15s ease;
+}
+
+.cloud-link:hover {
+  border-color: var(--accent);
+  background: rgba(184, 224, 74, 0.04);
+  color: var(--text);
+}
+
+.cloud-link span {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.cloud-link strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.cloud-link small {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+/* ========== 푸터 ========== */
+
+.site-footer {
+  margin-top: 72px;
+  border-top: 1px solid var(--line);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 26px;
+  padding-bottom: 26px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+/* ========== 연락하기 모달 ========== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(8, 9, 11, 0.72);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.modal-backdrop[hidden] { display: none; }
+
+.modal {
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  padding: 36px 36px 32px;
+  box-shadow: 0 28px 64px rgba(0, 0, 0, 0.55);
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-mute);
+  cursor: pointer;
+}
+.modal-close:hover { color: var(--text); }
+
+.modal-name {
+  margin-top: 12px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.modal .name-en { margin-top: 6px; font-size: 13px; }
+
+.modal-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.modal-field {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.modal-field p + p {
+  margin-top: 8px;
+  font-size: 18px;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.modal-field a {
+  color: inherit;
+  text-decoration: none;
+}
+.modal-field a:hover { color: var(--accent); }
+
+/* ============================================================
+   반응형
+   ============================================================ */
+
+/* 태블릿 — 강점 카드와 클라우드 링크를 한 줄로 */
+@media (max-width: 860px) {
+  :root { --gutter: 28px; }
+
+  .headline { font-size: 34px; }
+  .intro { font-size: 16px; }
+
+  .strength-grid,
+  .cloud-grid { grid-template-columns: 1fr; }
+
+  .profile {
+    flex: 0 0 220px;
+    width: 220px;
+    height: 294px;
+  }
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  :root { --gutter: 20px; }
+
+  .section { padding-top: 48px; }
+  .section-title { font-size: 24px; }
+
+  .header-inner { gap: 12px; }
+  .nav { gap: 18px; }
+  .nav a { font-size: 13px; }
+  .logo { font-size: 12px; }
+
+  .about-top { gap: 26px; }
+
+  .profile {
+    flex: 0 0 auto;
+    width: 204px;
+    height: 272px;
+  }
+
+  .headline { font-size: 28px; line-height: 1.35; }
+  .intro { font-size: 15px; }
+
+  /* 좁은 화면에서는 강제 줄바꿈이 오히려 들쭉날쭉해지므로 흐르게 둡니다. */
+  .intro br,
+  .strength p br { display: none; }
+
+  .info-item {
+    flex: 1 1 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .info-item:last-child { border-bottom: none; }
+
+  .strength { padding: 20px; }
+  .strength h3 { font-size: 16px; }
+  .strength p { font-size: 13px; }
+
+  /* Skills — 라벨을 위로 올리고 태그를 아래에 */
+  .skill-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 11px;
+    padding: 16px 18px;
+  }
+  .skill-label { flex: none; }
+  .tag { font-size: 13px; padding: 8px 12px; }
+
+  /* 프로젝트 카드 — 세로 적층 */
+  .project-card {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .thumb {
+    flex: none;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .project-title { font-size: 18px; }
+  .project-desc { font-size: 13px; }
+
+  .play-slot { align-self: stretch; }
+  .play-slot .btn { width: 100%; }
+
+  .archive-row,
+  .archive-block { padding: 22px; }
+
+  .archive-row h3,
+  .archive-block h3 { font-size: 18px; }
+
+  .archive-row .btn { width: 100%; }
+
+  .footer-inner { flex-direction: column; gap: 7px; }
+
+  .modal { padding: 30px 24px 26px; }
+  .modal-close { top: 8px; right: 8px; }
+}
+
+/* 움직임을 줄이도록 설정한 사용자에게는 전환 효과를 끕니다. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
