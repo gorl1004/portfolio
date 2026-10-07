@@ -491,9 +491,18 @@ button:focus-visible {
   padding: 34px 36px;
 }
 
+/* 블록 제목 아래 한 줄 설명 */
+.archive-desc {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-mute);
+}
+
+/* 링크 개수에 따라 칸이 자동으로 2~3열로 잡힙니다. */
 .cloud-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 14px;
   margin-top: 22px;
 }
