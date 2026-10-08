@@ -170,4 +170,59 @@
   document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' && !modal.hidden) { closeModal(); }
   });
+
+  /* ------------------------------------------------------------
+     3. 바깥으로 나가는 링크 클릭 집계
+
+     페이지를 열기만 한 방문과, 실제로 자료까지 열어본 방문을
+     구분하기 위한 기록입니다.
+
+     프로젝트 카드는 위에서 JS로 나중에 만들어지기 때문에,
+     각 링크에 핸들러를 거는 대신 document에 한 번만 걸어 두고
+     이벤트 위임(event delegation)으로 받습니다.
+     카드를 몇 개 더 추가해도 이 코드는 그대로 둬도 됩니다.
+     ------------------------------------------------------------ */
+
+  // 링크 하나를 받아 집계에 남길 이름을 돌려줍니다. 집계 대상이 아니면 null.
+  function outboundLabel(link) {
+    if (link.classList.contains('card-link')) {
+      var label = link.getAttribute('aria-label') || '';
+      return '영상-' + label.replace(' 영상 보기', '').trim();
+    }
+
+    if (link.closest('.play-slot')) {
+      var card = link.closest('.project-card');
+      var title = card ? card.querySelector('.project-title') : null;
+      return '플레이-' + (title ? title.textContent.trim() : '');
+    }
+
+    if (link.classList.contains('cloud-link')) {
+      var strong = link.querySelector('strong');
+      return '자료-' + (strong ? strong.textContent.trim() : '');
+    }
+
+    if (/\.pdf$/i.test(link.getAttribute('href') || '')) {
+      return '자료-' + link.textContent.trim();
+    }
+
+    return null;
+  }
+
+  document.addEventListener('click', function (event) {
+    var link = event.target.closest ? event.target.closest('a') : null;
+    if (!link) { return; }
+
+    var label = outboundLabel(link);
+    if (!label) { return; }
+
+    // 집계 스크립트가 아직 로드되지 않았거나, 본인 방문 제외가 켜져 있으면
+    // 아무 일도 하지 않고 넘어갑니다. 링크 이동 자체는 막지 않습니다.
+    if (!window.goatcounter || typeof window.goatcounter.count !== 'function') { return; }
+
+    window.goatcounter.count({
+      path:  label,
+      title: link.href,
+      event: true,
+    });
+  });
 })();
