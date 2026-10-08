@@ -68,6 +68,10 @@
         '<div class="project-head">' +
           '<span class="project-no">' + padOrder(project.order) + '</span>' +
           '<h3 class="project-title">' + escapeHtml(project.title) + '</h3>' +
+          // period는 없는 프로젝트가 있어도 되도록 있을 때만 붙입니다.
+          (project.period
+            ? '<span class="project-period">' + escapeHtml(project.period) + '</span>'
+            : '') +
         '</div>' +
         '<p class="project-stack">' + escapeHtml(project.stack) + '</p>' +
         '<ul class="project-desc">' + descriptions + '</ul>' +

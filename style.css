@@ -415,7 +415,8 @@ button:focus-visible {
 .project-head {
   display: flex;
   align-items: baseline;
-  gap: 12px;
+  flex-wrap: wrap;      /* 좁은 화면에서 제목이 길면 기간이 다음 줄로 내려갑니다 */
+  gap: 4px 12px;
 }
 
 .project-no {
@@ -428,6 +429,18 @@ button:focus-visible {
 .project-title {
   font-size: 21px;
   font-weight: 600;
+}
+
+/* 개발 기간. margin-left:auto로 제목과 떼어 오른쪽 끝에 붙입니다.
+   카드마다 같은 위치에 오므로 스크롤만 내려도 연도가 세로로 읽힙니다. */
+.project-period {
+  margin-left: auto;
+  flex: none;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  white-space: nowrap;
 }
 
 .project-stack {
